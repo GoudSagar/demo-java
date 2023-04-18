@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Creating Dir-1
+    file: path=/home/ansible/dir1 state=directory
+  - name: Creating Dir-2
+    file: path=/home/ansible/dir2 state=directory
+  - name: Creating Dir-3
+    file: path=/home/ansible/dir3 state=directory

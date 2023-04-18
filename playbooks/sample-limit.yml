@@ -1,0 +1,21 @@
+---
+- hosts: webservers
+  become: true
+  vars:
+   name: john
+  tasks:
+  - name: Install zip
+    yum: name=zip state=present
+    become: true
+  - name: Install wget
+    yum: name=wget state=present
+- hosts: appservers
+  become: true
+  vars:
+   name: john
+  tasks:
+  - name: Install git
+    yum: name=git state=present
+    become: true
+  - name: Install Httpd
+    yum: name=httpd state=present

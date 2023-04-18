@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  vars:
+   first:
+   - John
+   - smith
+   - kiran
+  tasks:
+  - name: Display variables
+    debug: 
+     msg {{ first[1] }}

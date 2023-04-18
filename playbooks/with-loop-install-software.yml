@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install softwares
+    yum: name={{ item }} state=present
+    with_items:
+     - 'git'
+     - 'wget'
+     - 'zip'

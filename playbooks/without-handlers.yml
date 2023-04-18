@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install httpd
+    yum: name=httpd state=present
+  - name: Start httpd Service
+    service: name=httpd state=started
+  - name: configuration file
+    copy: src=/home/ansible/index.html dest=/var/www/html/index.html
+  - name: Service Restart
+    service: name=httpd state=restarted

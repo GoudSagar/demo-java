@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  become: true
+  vars: 
+   - PORT: 8080
+   - HOSTNAME: 10.0.0.5
+  tasks:
+  - name: Configuration changes
+    template: src=/home/ansible/server.xml.j2 dest=/home/ansible/server.xml

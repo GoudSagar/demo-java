@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  become: true
+  vars:
+   name: john
+  tasks:
+  - name: Install git
+    yum: name=git state=present
+    tags:
+     - git
+  - name: Install Httpd
+    yum: name=httpd state=present
+    tags:
+    - httpd

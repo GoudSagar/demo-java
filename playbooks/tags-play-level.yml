@@ -1,0 +1,31 @@
+---
+- hosts: webservers
+  become: true
+  tags:
+   - httpd-package
+  vars:
+   name: john
+  tasks:
+  - name: Install httpd
+    yum: name=httpd state=present
+    tags:
+     - install-http
+  - name: Service Activity
+    service: name=httpd state=restarted
+    tags:
+    - restart-httpd
+- hosts: webservers
+  become: true
+  tags:
+   - git-activity
+  vars:
+   name: john
+  tasks:
+  - name: Copy task 
+    copy: src=/home/ansible/controller.txt dest=/home/ansible/controller.txt
+    tags:
+     - copy-file
+  - name: Install git
+    yum: name=git state=present
+    tags:
+    - git

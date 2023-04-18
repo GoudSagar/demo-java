@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install remove upgrade packages
+    yum: name={{ item.name }} state={{ item.state }}
+    with_items:
+     - { name: git, state: absent }
+     - { name: maven, state: present }
+     - { name: wget, state: present }
+     - { name: zip, state: present }
+     - { name: httpd, state: absent }

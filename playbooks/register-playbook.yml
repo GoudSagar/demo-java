@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install git
+    yum: name=git state=present
+    register: 
+     reg_output
+  - debug:
+     var: reg_output
